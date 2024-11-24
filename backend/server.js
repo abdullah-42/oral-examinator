@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./database');
+const userRoutes = require('./routes/users');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -10,10 +11,8 @@ connectDB();
 // Middleware
 app.use(express.json()); // Zum Parsen von JSON-Daten
 
-// Beispiel-Route
-app.get('/api/users', (req, res) => {
-    res.json({ message: 'Produkte abgerufen!' });
-});
+
+app.use('/api/oral-exam/users', userRoutes);
 
 // Server starten
 app.listen(PORT, () => {
