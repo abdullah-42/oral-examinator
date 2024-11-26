@@ -4,8 +4,6 @@ const connectDB = async () => {
     try {
         // Verbindungs-URI für MongoDB Atlas
         await mongoose.connect('mongodb+srv://uabdullah4242:HwjNNA1VRhTxcffi@cluster0.kitro.mongodb.net/oral-exam?retryWrites=true&w=majority', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
         });
         console.log('MongoDB verbunden!');
     } catch (err) {
