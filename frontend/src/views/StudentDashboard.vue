@@ -121,8 +121,9 @@
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    padding: 3rem 2rem;
+    gap: 3rem;
+    padding: 4rem;
+    height: 100vh;
 }
 
 .card {
@@ -144,19 +145,19 @@
 .card-title {
     color: rgb(var(--v-theme-textPrimary));
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.8rem !important;
     margin-bottom: 0.5rem;
 }
 
 .card-subtitle {
     color: rgb(var(--v-theme-textPrimary));
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: 1.4rem !important;
     margin-bottom: 1rem;
 }
 
 .card-text {
-    font-size: 1rem;
+    font-size: 1.1rem !important;
     line-height: 1.6;
     margin-bottom: 1rem;
 }

@@ -7,6 +7,8 @@ const routes = [
     { path: '/', component: StartPage },
     { path: '/teacher', component: TeacherDashboard },
     { path: '/student', component: StudentDashboard },
+    { path: '/examlist', component: ExamList },
+
 ];
 
 const router = createRouter({
