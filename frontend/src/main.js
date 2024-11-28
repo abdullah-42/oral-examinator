@@ -3,11 +3,13 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
+
 import 'vuetify/styles'; // Vuetify CSS
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import '@mdi/font/css/materialdesignicons.css'; // Material Design Icons
+import DialogEndOfExam from './components/DialogEndOfExam.vue';
 
 const vuetify = createVuetify({
     components,
@@ -32,8 +34,18 @@ const vuetify = createVuetify({
 
 export default vuetify;
 
+
 const app = createApp(App);
+
+// Globale Registrierung
+app.component('DialogEndOfExam', DialogEndOfExam);
+
+
+
 app.use(store);
 app.use(router);
 app.use(vuetify);
-app.mount('#app');
+
+document.addEventListener('DOMContentLoaded', () => {
+    app.mount('#app');
+});

@@ -1,6 +1,6 @@
 <template>
     <!-- Responsiver Inhalt als Gitter im 2x2-Layout -->
-    <div class="container">
+    <div class="grid-container">
         <!-- Obere V-Karten -->
         <v-card class="card">
             <v-card-title class="card-title">
@@ -127,7 +127,7 @@ export default {
     display: flex !important;
 }
 
-.container {
+.grid-container {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(2, 1fr);

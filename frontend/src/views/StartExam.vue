@@ -9,7 +9,8 @@
             <!-- Textinhalt -->
             <v-card-text class="card-text">
                 <h3 class="headline">{{ modul }}</h3>
-                <p class="difficulty-text">{{ difficulty }}</p>
+                <p class="difficulty-text">Stufe: {{ difficulty }}</p>
+                <p class="difficulty-text">Dauer: {{ timer }}min</p>
             </v-card-text>
 
             <!-- Start-Button -->
@@ -23,44 +24,36 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import Fragenkatalog from '../store/fragenkatalog'; // Fragenkatalog importieren
+import { useRouter } from 'vue-router';  // Import useRouter properly
+import Fragenkatalog from '../components/fragenkatalog';
 
-// Vuex Store und Router einrichten
 const store = useStore();
+const router = useRouter();  // Use the router hook
 
 const modul = computed(() => store.getters.getModul);
 const difficulty = computed(() => store.getters.getDifficulty);
+const timer = ref(0);
 
-// Fragen aus dem Fragenkatalog laden
-// const fragen = ref([]);
+onMounted(() => {
+    loadQuestions(); // Fragen sofort laden, wenn die Komponente gerendert wird
+});
 
 const loadQuestions = () => {
-    // if (difficulty.value === "Leicht") {
-    //     fragen.value = Fragenkatalog.dataStufe1();
-    // } else if (difficulty.value === "Mittel") {
-    //     fragen.value = Fragenkatalog.dataStufe2();
-    // } else if (difficulty.value === "Schwer") {
-    //     fragen.value = Fragenkatalog.dataStufe3();
-    // } else {
-    //     console.warn("Unbekannter Schwierigkeitsgrad. Verwende Standard.");
-    //     fragen.value = Fragenkatalog.dataStufe2();
-    // }
-    const stufe1Data = Fragenkatalog;
-    console.log(stufe1Data); // Gibt das gesamte Datenobjekt für Stufe 1 aus
-
+    if (difficulty.value === "Leicht") {
+        timer.value = Fragenkatalog.dataStufe1().duration / 60;
+    } else if (difficulty.value === "Mittel") {
+        timer.value = Fragenkatalog.dataStufe2().duration / 60;
+    } else if (difficulty.value === "Schwer") {
+        timer.value = Fragenkatalog.dataStufe3().duration / 60;
+    }
 };
 
-// Initiale Fragen laden
-loadQuestions();
-
-// Klick-Handler
-// const startOralExaminator = () => {
-//     router.push('/student/examList'); // Navigiert zur ExamList
-// };
+const startOralExaminator = () => {
+    router.push('/student/examList/startExam/oralExam');
+};
 </script>
-
 
 <style>
 /* Zentriertes Layout */
@@ -75,7 +68,7 @@ loadQuestions();
 .card {
     width: 100%;
     max-width: 600px;
-    padding: 2rem;
+    padding: 2rem !important;
     background: #fff;
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
@@ -84,7 +77,6 @@ loadQuestions();
 }
 
 .card:hover {
-    transform: translateY(-10px);
     box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.15);
 }
 
