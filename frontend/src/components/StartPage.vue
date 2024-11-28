@@ -50,7 +50,7 @@
         <section class="cta-section">
           <v-card class="cta-card">
             <h2>Bist du bereit, deine Prüfungsvorbereitung auf das nächste Level zu bringen?</h2>
-            <button class="green-button" @click="redirectToViewDashStudent">Jetzt loslegen</button>
+            <button class="green-button" @click="redirectToExamList">Jetzt loslegen</button>
           </v-card>
         </section>
       </div>
@@ -66,8 +66,8 @@ export default {
       this.$store.commit('setRole', role);
       this.$router.push(`/${role}`);
     },
-    redirectToViewDashStudent() {
-      this.$router.push('/examlist');
+    redirectToExamList() {
+      this.$router.push(`/student/examList`);
     },
   },
 };

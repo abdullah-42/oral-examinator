@@ -13,11 +13,11 @@
                 <p>Hier findest du eine Auflistung aller verfügbaren Prüfungen, in denen du eingetragen bist.</p>
             </v-card-text>
             <v-card-actions class="card-action">
-                <v-btn>PRÜFUNGEN</v-btn>
+                <v-btn @click="redirectToExamList">PRÜFUNGEN</v-btn>
             </v-card-actions>
         </v-card>
 
-        <v-card class="card">
+        <v-card class=" card">
             <v-card-title class="card-title">
                 <span>Fragen einsehen</span>
             </v-card-title>
@@ -25,7 +25,8 @@
                 <span>Übersicht aller vorhandenen Fragen</span>
             </v-card-subtitle>
             <v-card-text class="card-text">
-                <p>Hier findest du einen Überblick aller verfügbaren Fragen des aktuellen Semesters, um dich so besser
+                <p>Hier findest du einen Überblick aller verfügbaren Fragen des aktuellen Semesters, um dich so
+                    besser
                     auf die
                     mündlichen Prüfungen vorbereiten zu können.</p>
             </v-card-text>
@@ -109,6 +110,15 @@
 // const redirectToDozentCourses = () => {
 // router.push( route.path + '/examListStudent');
 // };
+
+export default {
+    name: 'StudentDashboard',
+    methods: {
+        redirectToExamList() {
+            this.$router.push(`/student/examList`);
+        },
+    },
+};
 
 </script>
 

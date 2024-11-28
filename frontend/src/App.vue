@@ -3,12 +3,14 @@
     <!-- App-Wrapper mit Flexbox -->
     <v-app>
       <!-- Navbar -->
-      <v-app-bar app dense height="75">
-        <img src="./assets/logo-oral-exam1.svg" alt="Logo"
-          style="height: 70px; width: auto; padding-left: 10px; border-radius: 20px;" />
+      <v-app-bar app dense height="55">
+        <img to="/" src="./assets/logo-oral-exam1.svg" alt="Logo"
+          style="height: 55px; width: auto; border-radius: 20px; cursor: pointer;" />
         <v-toolbar-title class="text-h6">Oral-Examinator</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn text to="/" class="nav-btn">Startseite</v-btn>
+        <v-btn class="ma-2 nav-btn" color="orange darken-2" dark @click="goBack"><v-icon dark left>
+            mdi-arrow-left
+          </v-icon>Back</v-btn>
       </v-app-bar>
 
       <!-- Hauptinhalt -->
@@ -22,6 +24,21 @@
 <script>
 export default {
   name: 'App',
+  methods: {
+    goBack() {
+      const currentPath = this.$route.path;
+
+      // Pfad in Segmente aufteilen
+      const pathSegments = currentPath.split('/').filter(segment => segment);
+
+      // Einen Abschnitt entfernen
+      pathSegments.pop();
+
+      // Zurück zum neuen Pfad navigieren
+      const newPath = '/' + pathSegments.join('/');
+      this.$router.push(newPath || '/'); // Fallback zur Startseite
+    },
+  }
 };
 </script>
 
@@ -45,6 +62,7 @@ export default {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1) !important;
   backdrop-filter: blur(100px) !important;
   opacity: 0.96 !important;
+  padding: 10px;
 }
 
 /* Flexibles Layout für den Hauptinhalt */
