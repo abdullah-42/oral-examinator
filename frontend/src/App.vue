@@ -5,12 +5,13 @@
       <!-- Navbar -->
       <v-app-bar app dense height="55">
         <img to="/" src="./assets/logo-oral-exam1.svg" alt="Logo"
-          style="height: 55px; width: auto; border-radius: 20px; cursor: pointer;" />
+          style="height: 45px; width: auto; border-radius: 20px; cursor: pointer;" />
         <v-toolbar-title class="text-h6">Oral-Examinator</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn class="ma-2 nav-btn" color="orange darken-2" dark @click="goBack"><v-icon dark left>
-            mdi-arrow-left
-          </v-icon>Back</v-btn>
+        <v-btn class="ma-2 nav-btn" color="orange darken-2" dark @click="goBack">
+          <v-icon dark left>mdi-arrow-left</v-icon>
+
+        </v-btn>
       </v-app-bar>
 
       <!-- Hauptinhalt -->
@@ -20,6 +21,7 @@
     </v-app>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -42,7 +44,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* App-Wrapper als Flexbox-Container */
 #app {
   display: flex;
@@ -62,28 +64,24 @@ export default {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1) !important;
   backdrop-filter: blur(100px) !important;
   opacity: 0.96 !important;
-  padding: 10px;
+  z-index: 10;
+  /* Damit die Navbar immer oben bleibt */
 }
 
 /* Flexibles Layout für den Hauptinhalt */
 .content-wrapper {
   flex: 1;
+  /* Füllt den restlichen Platz aus */
+  min-height: calc(100vh - var(--v-toolbar-height));
   background-image: url('@/assets/logo-oral-exam2.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: auto;
-  /* Scrollen nur, wenn nötig */
 }
-
 
 /* Button-Styling */
 .nav-btn {
   text-transform: none;
   font-weight: bold;
-}
-
-.v-main {
-  padding-top: 50px !important;
 }
 </style>

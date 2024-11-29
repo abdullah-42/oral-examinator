@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <v-card class="card">
+        <v-card class="card flex-column">
             <!-- Titel -->
             <v-card-title class="card-title">
                 <h2 class="display-1">Oral Examinator starten</h2>

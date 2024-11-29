@@ -2,7 +2,7 @@
     <!-- Responsiver Inhalt als Gitter im 2x2-Layout -->
     <div class="grid-container">
         <!-- Obere V-Karten -->
-        <v-card class="card">
+        <v-card class="card-student">
             <v-card-title class="card-title">
                 <span>Prüfungen</span>
             </v-card-title>
@@ -17,7 +17,7 @@
             </v-card-actions>
         </v-card>
 
-        <v-card class=" card">
+        <v-card class="card-student">
             <v-card-title class="card-title">
                 <span>Fragen einsehen</span>
             </v-card-title>
@@ -32,12 +32,11 @@
             </v-card-text>
 
             <v-card-actions class="card-action">
-                <v-btn>FRAGENKATALOG</v-btn>
-                <!-- <v-btn @click="redirectToViewFragenEinsehen">ZU DEM FRAGENKATALOG</v-btn> -->
+                <v-btn @click="redirectToViewFragenEinsehen">FRAGENKATALOG</v-btn>
             </v-card-actions>
         </v-card>
 
-        <v-card class="card">
+        <v-card class="card-student">
             <v-card-title class="card-title">
                 <span>Meine Prüfungsergebnisse</span>
             </v-card-title>
@@ -53,14 +52,13 @@
             </v-card-actions>
         </v-card>
 
-        <v-card class="card">
+        <v-card class="card-student">
             <v-card-title class="card-title">Feedback hinterlassen</v-card-title>
             <v-card-subtitle class="card-subtitle"></v-card-subtitle>
             <v-card-text class="card-text">Hier hast du die Möglichkeit, Feedback zu geben, falls du auf Probleme stößt
                 oder
                 Unterstützung benötigst.</v-card-text>
             <v-card-text class="text">
-                <!-- <v-text-field class="custom-textarea" v-model="feedback.text"></v-text-field> -->
             </v-card-text>
             <v-card-actions class="card-action">
 
@@ -73,49 +71,14 @@
 </template>
 
 <script>
-// import { ref } from 'vue';
-// import Feedback from "@/model/Feedback";
-// import User from "../../model/User";
-// import feedbackService from "../../services/feedback.service";
-// import { useAuthUserStore } from "@/stores/authUserStore";
-// import {useRouter} from 'vue-router';
-// import {useRoute} from 'vue-router';
-
-
-// const router = useRouter();
-// const route = useRoute();
-
-// const authUserStore = useAuthUserStore();
-
-// const feedback = ref<Feedback>({} as Feedback);
-// const snackbarSuccess = ref(false);
-
-
-// const sendFeedback = () => {
-//   const user: User = authUserStore.user as User;
-//   feedback.value.firstName = user.username;
-//   feedback.value.lastName = user.email;
-
-//   feedbackService.createFeedback(feedback.value).then(() => {
-//     snackbarSuccess.value = true;
-//     feedback.value = {} as Feedback;
-//   });
-
-// };
-
-// const redirectToViewFragenEinsehen = () => {
-// router.push( route.path + '/fragenEinsehen');
-
-// }
-// const redirectToDozentCourses = () => {
-// router.push( route.path + '/examListStudent');
-// };
-
 export default {
     name: 'StudentDashboard',
     methods: {
         redirectToExamList() {
             this.$router.push(`/student/examList`);
+        },
+        redirectToViewFragenEinsehen() {
+            this.$router.push(`/student/examCatalog`);
         },
     },
 };
@@ -133,19 +96,17 @@ export default {
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
     padding: 4rem;
-    height: 100vh;
 }
 
-.card {
+.card-student {
     background: linear-gradient(145deg, rgb(var(--v-theme-cardBackground)), rgb(var(--v-theme-background)));
     border-radius: 16px;
-    padding: 2.5rem;
+    padding: 0.5rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: auto;
 }
 
 .card:hover {

@@ -339,6 +339,8 @@ export default {
 
           .page-container {
           position: relative;
+          background-color: #ffffffe2;
+          border-radius: 25px;
           }
           
           .frage-container {

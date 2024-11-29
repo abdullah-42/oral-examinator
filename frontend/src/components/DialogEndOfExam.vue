@@ -53,6 +53,23 @@ export default {
     },
     methods: {
 
+        addResult() {
+            // Erstellen des neuen Ergebnisses
+            const newResult = {
+                punkte: this.correctAnswers,
+                status: this.passed ? 'bestanden' : 'nicht bestanden',
+                datum: this.formattedDate,
+                stufe: this.giveStufe,
+                feedback: this.feedback,
+            };
+
+            // Hinzufügen des neuen Ergebnisses zum `ergebnisse`-Array
+            this.ergebnisse.push(newResult);
+
+            console.log(this.ergebnisse); // Zum Testen, ob das Array aktualisiert wird
+        },
+
+
         goBack() {
             // Hier kannst du das Feedback speichern oder andere Aktionen ausführen, bevor du zur vorherigen Seite zurückgehst
             console.log('Feedback:', this.feedback);
