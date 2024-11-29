@@ -2,32 +2,50 @@
     <div class="container-catalog">
         <h2 style="margin-bottom: 15px; color: #fff;">Prüfungsfragen</h2>
         <v-row>
-            <v-col cols="12" v-for="(frage, index) in combinedQuestionsText" :key="index">
+            <v-col cols="12" v-for="(item, index) in combinedQuestions" :key="index">
                 <v-card class="mb-3">
-                    <v-card-title class=text>
-                        {{ index + 1 }}. {{ frage }}
+                    <v-card-title class="text">
+                        {{ index + 1 }}. {{ item.frage }}
                     </v-card-title>
+                    <v-card-subtitle style="white-space: wrap;">
+                        Schlüsselkeys: <strong>{{ item.loesungen }}</strong>
+                    </v-card-subtitle>
                 </v-card>
             </v-col>
         </v-row>
     </div>
 </template>
 
+
 <script setup>
 import { ref, onMounted } from 'vue';
 import Fragenkatalog from '../components/fragenkatalog';
 
-const combinedQuestionsText = ref([]);
+const combinedQuestions = ref([]);
 
 onMounted(() => {
-    // Kombiniere die Fragen aus allen Stufen und extrahiere nur den Fragetext
-    combinedQuestionsText.value = [
-        ...Fragenkatalog.dataStufe1().fragenText,
-        ...Fragenkatalog.dataStufe2().fragenText,
-        ...Fragenkatalog.dataStufe3().fragenText
-    ].map(fragenText => fragenText.frage); // Extrahiere nur die 'frage' Eigenschaft
+    // Kombiniere die Fragen und Lösungen aus allen Stufen
+    const fragenDataStufe1 = Fragenkatalog.dataStufe1();
+    const fragenDataStufe2 = Fragenkatalog.dataStufe2();
+    const fragenDataStufe3 = Fragenkatalog.dataStufe3();
+
+    combinedQuestions.value = [
+        ...fragenDataStufe1.fragenText.map((item, index) => ({
+            frage: item.frage,
+            loesungen: fragenDataStufe1.stichpunkte[index]?.loesungen
+        })),
+        ...fragenDataStufe2.fragenText.map((item, index) => ({
+            frage: item.frage,
+            loesungen: fragenDataStufe2.stichpunkte[index]?.loesungen
+        })),
+        ...fragenDataStufe3.fragenText.map((item, index) => ({
+            frage: item.frage,
+            loesungen: fragenDataStufe3.stichpunkte[index]?.loesungen
+        }))
+    ];
 });
 </script>
+
 
 <style scoped>
 .container-catalog {
@@ -39,6 +57,8 @@ onMounted(() => {
 }
 
 .mb-3 {
+    display: flex;
+    flex-direction: column;
     border-radius: 20px;
     box-shadow: 0 2px 5px rgba(61, 61, 59, 0.6);
     margin-top: 5px;

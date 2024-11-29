@@ -126,14 +126,7 @@ export default {
             { frageId: 32, loesungen: ["Daten", "Zugriff", "Daten", "Sicherheit", "mobil", "Anwendung"] },
             { frageId: 33, loesungen: ["Weiterbildung", "Workshops", "Online", "Kurse"] },
         ],
-        showResult: false,  // Wird auf true gesetzt, wenn alle Fragen beantwortet sind, um das Resultat anzuzeigen
-        //Hier sind ein paar Beispiel Ergebnisse, die beim Dozentenansicht unter Prüfungsergebnisse angezeigt werden können
-        ergebnisse: [
-            { username: "user1", punkte: "2/10", status: "nicht bestanden", datum: "10.02.24", stufe: "Leicht", feedback: "Feedback 1" },
-            { username: "user2", punkte: "8/10", status: "bestanden", datum: "12.02.24", stufe: "Leicht", feedback: "Feedback 2" },
-            { username: "user3", punkte: "9/10", status: "bestanden", datum: "13.02.24", stufe: "Leicht", feedback: "Feedback 3" },
-            { username: "user4", punkte: "4/10", status: "nicht bestanden", datum: "14.02.24", stufe: "Leicht", feedback: "Feedback 4" },
-        ]
+        showResult: false,
     }),
     // Methode für Stufe 2
     dataStufe2: () => ({
@@ -264,12 +257,6 @@ export default {
             { frageId: 34, loesungen: ["Rechtliche", "Vorschrift", "Daten", "Schutz", "international", "Standards"] },
         ],
         showResult: false,
-        ergebnisse: [
-            { username: "user1", punkte: "2/15", status: "nicht bestanden", datum: "15.02.24", stufe: "Mittel", feedback: "Feedback 1" },
-            { username: "user2", punkte: "8/15", status: "bestanden", datum: "12.02.24", stufe: "Mittel", feedback: "Feedback 2" },
-            { username: "user3", punkte: "9/15", status: "bestanden", datum: "13.02.24", stufe: "Mittel", feedback: "Feedback 3" },
-            { username: "user4", punkte: "4/15", status: "nicht bestanden", datum: "14.02.24", stufe: "Mittel", feedback: "Feedback 4" },
-        ]
     }),
 
     // Methode für Stufe 3
@@ -395,11 +382,5 @@ export default {
             { frageId: 32, loesungen: ["Verschiedene", "Daten", "Typen", "Flexible", "Abfragen", "Komplex", "Modelle"] },
         ],
         showResult: false,
-        ergebnisse: [
-            { username: "user1", punkte: "2/20", status: "nicht bestanden", datum: "10.02.24", stufe: "Schwer", feedback: "Feedback 1" },
-            { username: "user2", punkte: "8/20", status: "bestanden", datum: "12.02.24", stufe: "Schwer", feedback: "Feedback 2" },
-            { username: "user3", punkte: "9/20", status: "bestanden", datum: "13.02.24", stufe: "Schwer", feedback: "Feedback 3" },
-            { username: "user4", punkte: "4/20", status: "nicht bestanden", datum: "14.02.24", stufe: "Schwer", feedback: "Feedback 4" },
-        ]
     }),
 };
