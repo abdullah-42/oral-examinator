@@ -39,13 +39,8 @@ const app = createApp(App);
 
 // Globale Registrierung
 app.component('DialogEndOfExam', DialogEndOfExam);
-
-
-
 app.use(store);
 app.use(router);
 app.use(vuetify);
+app.mount('#app');
 
-document.addEventListener('DOMContentLoaded', () => {
-    app.mount('#app');
-});

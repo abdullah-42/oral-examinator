@@ -48,7 +48,7 @@
             </v-card-text>
 
             <v-card-actions class="card-action">
-                <v-btn to="/">ERGEBNISSE</v-btn>
+                <v-btn @click="redirectToExamResults">ERGEBNISSE</v-btn>
             </v-card-actions>
         </v-card>
 
@@ -79,6 +79,9 @@ export default {
         },
         redirectToViewFragenEinsehen() {
             this.$router.push(`/student/examCatalog`);
+        },
+        redirectToExamResults() {
+            this.$router.push(`/student/examResults`);
         },
     },
 };

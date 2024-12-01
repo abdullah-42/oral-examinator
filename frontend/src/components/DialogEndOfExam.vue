@@ -94,7 +94,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 .result-card {
     background-color: #f5f5f5;
     border: 2px solid #4caf50;

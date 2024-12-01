@@ -73,7 +73,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .v-application {
     background: none !important;
 }

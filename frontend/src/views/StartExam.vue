@@ -14,7 +14,7 @@
             </v-card-text>
 
             <div class="input-user">
-                <input type="text" v-model="user" placeholder="Benutzename" />
+                <input type="text" v-model="user" placeholder="Benutzername" />
             </div>
 
             <!-- Start-Button -->
@@ -113,6 +113,14 @@ const startOralExaminator = () => {
 .difficulty-text {
     font-size: 1rem;
     color: #777;
+}
+
+input {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    border-style: none;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
 }
 
 /* Button-Design */

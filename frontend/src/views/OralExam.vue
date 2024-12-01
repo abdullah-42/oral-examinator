@@ -6,7 +6,7 @@
             <p>Die Prüfung wurde abgebrochen. Bitte wenden Sie sich an Ihren Prüfer.</p>
         </div>
         <div class="frage-container">
-
+            <!-- Iframe für Video -->
             <iframe :src="pruefungsFragen[randomFrageId].videoUrl" width="915" height="515" frameborder="0"
                 allowfullscreen></iframe>
             <div class="frage-nummer">
@@ -29,6 +29,7 @@
             <div v-if="transcript">Ihre Antwort: {{ transcript }}</div>
         </div>
 
+        <!-- Cancel button und Bestätigungsdialog -->
         <div class="cancel-button" @click="showConfirmation">X</div>
         <div v-if="isConfirmationVisible" class="confirmation-dialog">
             <p>Sind Sie sich sicher, dass Sie die Prüfung abbrechen wollen?</p>
@@ -38,9 +39,12 @@
             </div>
         </div>
     </div>
+
+    <!-- Dialog am Ende der Prüfung -->
     <DialogEndOfExam v-if="this.showResult" :punkteAnzahl="punkteAnzahl" :gesamtFragen="gesamtFragen"
         :schwierigkeit="schwierigkeit" />
 </template>
+
 
 
 <script>
@@ -335,7 +339,7 @@ export default {
 };
 
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 
           .page-container {
           position: relative;
@@ -538,7 +542,7 @@ export default {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #5fe392; /* Primärfarbe */
+  background-color: #45a049;
   color: white; /* Textfarbe */
   cursor: pointer; /* Cursor-Stil */
 }

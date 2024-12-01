@@ -47,13 +47,14 @@ onMounted(() => {
 </script>
 
 
-<style scoped>
+<style>
 .container-catalog {
     font-family: Arial, sans-serif;
     padding: 40px;
     padding-top: 70px;
     border-radius: 25px;
     background-color: #336f36e0;
+    width: 90%;
 }
 
 .mb-3 {
