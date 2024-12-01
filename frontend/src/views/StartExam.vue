@@ -13,6 +13,10 @@
                 <p class="difficulty-text">Dauer: {{ timer }}min</p>
             </v-card-text>
 
+            <div class="input-user">
+                <input type="text" v-model="user" placeholder="Benutzename" />
+            </div>
+
             <!-- Start-Button -->
             <v-card-actions class="card-action">
                 <v-btn class="start-btn" large rounded @click="startOralExaminator">
@@ -26,18 +30,19 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';  // Import useRouter properly
+import { useRouter } from 'vue-router';
 import Fragenkatalog from '../components/fragenkatalog';
 
 const store = useStore();
-const router = useRouter();  // Use the router hook
+const router = useRouter();
 
 const modul = computed(() => store.getters.getModul);
 const difficulty = computed(() => store.getters.getDifficulty);
 const timer = ref(0);
+const user = ref('');
 
 onMounted(() => {
-    loadQuestions(); // Fragen sofort laden, wenn die Komponente gerendert wird
+    loadQuestions();
 });
 
 const loadQuestions = () => {
@@ -51,8 +56,13 @@ const loadQuestions = () => {
 };
 
 const startOralExaminator = () => {
+    if (user.value == '') {
+        user.value = 'Anonym';
+    }
+    store.commit('setUser', user.value);
     router.push('/student/examList/startExam/oralExam');
 };
+
 </script>
 
 <style>

@@ -52,9 +52,6 @@ export default {
                     difficulty: difficulty,
                 }
                 );
-
-            console.log(this.$store.getters.getModul);
-            console.log(this.$store.getters.getDifficulty);
             this.$router.push(`/student/examList/startExam`);
 
 

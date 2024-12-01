@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-    <DialogEndOfExam v-if="this.showResult" :punkteAnzahl="punkteAnzahl" :gesamtFragen="gesamtFragen" :message="message"
+    <DialogEndOfExam v-if="this.showResult" :punkteAnzahl="punkteAnzahl" :gesamtFragen="gesamtFragen"
         :schwierigkeit="schwierigkeit" />
 </template>
 
@@ -63,7 +63,6 @@ export default {
         // Declare router as part of data, this avoids 'router' being undefined in methods
         return {
             router: null,  // Declare it here, so it's accessible in methods and computed
-            message: '',
             difficulty,
             // Handle difficulty levels and return corresponding data from Fragenkatalog
             ...(
@@ -302,7 +301,8 @@ export default {
                 // Aktualisieren Sie this.randomFrageId entsprechend der neuen Auswahl
             } else {
                 console.log("Alle Fragen wurden durchlaufen!")
-                this.showResult = true;    // wenn showResult = true wird das Fenster für das Ende/Ergebnis der Prüfung aufgerufen 
+                this.showResult = true;    // wenn showResult = true wird das Fenster für das Ende/Ergebnis der Prüfung aufgerufen
+
             }
 
             // Erzeugt ein Array mit den Zahlen von 1 bis länge unsere Fragen, falls es nicht existiert

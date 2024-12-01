@@ -21,6 +21,9 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+import axios from 'axios';
 
 export default {
     props: {
@@ -29,17 +32,27 @@ export default {
         schwierigkeit: String,
         message: String,
     },
+    setup() {
+        const store = useStore(); // Zugriff auf den Store
+        const user = computed(() => store.getters.getUser);
+        return {
+            user
+        };
+    },
     data() {
         return {
             showResult: true,
             date: new Date(),
-            feedback: '', // Feedback-Datenfeld hinzufügen
-            ergebnisse: [], // hilfe : dass selbe mit dem export soll auch mit diesem array geschehen 
-        }
+        };
     },
     computed: {
         formattedDate() {
-            return this.date.toLocaleDateString('de-DE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            return this.date.toLocaleDateString('de-DE', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            });
         },
         correctAnswers() {
             return `${this.punkteAnzahl} / ${this.gesamtFragen}`;
@@ -49,42 +62,37 @@ export default {
         },
         giveStufe() {
             return this.schwierigkeit;
-        }
+        },
     },
     methods: {
-
-        addResult() {
-            // Erstellen des neuen Ergebnisses
+        async addResult() {
             const newResult = {
+                user: this.user,
                 punkte: this.correctAnswers,
                 status: this.passed ? 'bestanden' : 'nicht bestanden',
                 datum: this.formattedDate,
                 stufe: this.giveStufe,
-                feedback: this.feedback,
             };
 
-            // Hinzufügen des neuen Ergebnisses zum `ergebnisse`-Array
-            this.ergebnisse.push(newResult);
-
-            console.log(this.ergebnisse); // Zum Testen, ob das Array aktualisiert wird
+            try {
+                const response = await axios.post('http://localhost:5000/api/oral-exam/results', newResult);
+                console.log(response.data);
+            } catch (error) {
+                console.error('Error saving result:', error.response?.data || error.message);
+            }
         },
-
-
         goBack() {
-            // Hier kannst du das Feedback speichern oder andere Aktionen ausführen, bevor du zur vorherigen Seite zurückgehst
-            console.log('Feedback:', this.feedback);
             this.addResult();
             this.$router.push('/student');
         },
         retry() {
-            // Hier kannst du das Feedback speichern oder andere Aktionen ausführen, bevor du die Seite neu lädst
             this.addResult();
-            console.log('Feedback:', this.feedback);
-            location.reload()
+            location.reload();
         },
-    }
-}
+    },
+};
 </script>
+
 
 <style scoped>
 .result-card {
@@ -111,5 +119,25 @@ export default {
 
 .result-subtitle {
     color: red;
+}
+
+.v-dialog {
+    z-index: 2000 !important;
+}
+
+.v-overlay-container {
+    z-index: 1999 !important;
+}
+
+.v-text-field {
+    pointer-events: auto !important;
+    z-index: 2001 !important;
+    /* Sicherstellen, dass es interaktiv ist */
+}
+
+.v-dialog__content {
+    overflow: auto !important;
+    max-height: 90vh;
+    /* Dialog-Inhalt bleibt innerhalb des Viewports */
 }
 </style>
