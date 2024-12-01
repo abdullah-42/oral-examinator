@@ -52,7 +52,7 @@
             </v-card-actions>
         </v-card>
 
-        <v-card class="card-student">
+        <!-- <v-card class="card-student">
             <v-card-title class="card-title">Feedback hinterlassen</v-card-title>
             <v-card-subtitle class="card-subtitle"></v-card-subtitle>
             <v-card-text class="card-text">Hier hast du die Möglichkeit, Feedback zu geben, falls du auf Probleme stößt
@@ -65,7 +65,7 @@
                 <v-btn>Absenden</v-btn>
 
             </v-card-actions>
-        </v-card>
+        </v-card> -->
         <!-- <v-snackbar v-model="snackbarSuccess" :timeout="2500"> Vielen Dank für dein Feedback!</v-snackbar> -->
     </div>
 </template>

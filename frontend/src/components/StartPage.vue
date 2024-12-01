@@ -40,11 +40,10 @@
       <div class="right">
         <div class="login-container">
           <div class="login-title">
-            <h2>Bitte wähle deine Rolle</h2>
+            <h2>Klicke hier, um zum Dashboard zu gelangen!</h2>
           </div>
           <div class="form-container">
-            <button class="green-button" @click="selectRole('teacher')">Lehrer</button>
-            <button class="green-button" @click="selectRole('student')">Schüler</button>
+            <button class="green-button" @click="selectRole('student')">Dashboard</button>
           </div>
         </div>
         <section class="cta-section">
